@@ -29,7 +29,7 @@ async function fetchGoogleSheetData(sheetUrl) {
   // Convert CSV to JSON format
   const rows = csvData.split('\n');
   return rows.slice(1).map(row => {
-    const [ColumnA, ColumnB] = row.split(',|,');
+    const [ColumnA, ColumnB] = row.split(',');
     return { ColumnA: ColumnA?.trim(), ColumnB: ColumnB?.trim() };
   });
 }
@@ -75,52 +75,8 @@ function generateQuiz(inputList) {
   return quizData;
 }
 
-// Add event listeners to buttons
-document.getElementById('miss-day-and-night-1').addEventListener('click', () => {
-  window.open('https://docs.google.com/spreadsheets/d/1jluqCaMbfK5JxGjT8w8XKqsvdUgy2vNI7GFwot7jnqg/edit?gid=1917887240#gid=1917887240');
-});
-
-document.getElementById('miss-day-and-night-2').addEventListener('click', () => {
-  window.open('https://docs.google.com/spreadsheets/d/1jluqCaMbfK5JxGjT8w8XKqsvdUgy2vNI7GFwot7jnqg/edit?gid=1642463596#gid=1642463596');
-});
-
-document.getElementById('miss-day-and-night-3').addEventListener('click', () => {
-  window.open('https://docs.google.com/spreadsheets/d/1jluqCaMbfK5JxGjT8w8XKqsvdUgy2vNI7GFwot7jnqg/edit?gid=1379391506#gid=1379391506');  
-});
-document.getElementById('miss-day-and-night-3').addEventListener('click', () => {
-  window.open('https://docs.google.com/spreadsheets/d/1jluqCaMbfK5JxGjT8w8XKqsvdUgy2vNI7GFwot7jnqg/edit?gid=1379391506#gid=1379391506');  
-});
-document.getElementById('insta-hochdeutschhochturkce').addEventListener('click', () => {
-  window.open('https://docs.google.com/spreadsheets/d/1kiKWxExaaF74gbqRYdWrwexbDC_TZ-kOWjVLLuvcIlc/edit?gid=1901053947#gid=1901053947');  
-});
-document.getElementById('insta-micheda').addEventListener('click', () => {
-  window.open('https://docs.google.com/spreadsheets/d/1kiKWxExaaF74gbqRYdWrwexbDC_TZ-kOWjVLLuvcIlc/edit?gid=1720778446#gid=1720778446');  
-});
-document.getElementById('womit-damit').addEventListener('click', () => {
-  window.open('https://docs.google.com/spreadsheets/d/1rVZ7lyUQVjZj-b1Te4MQq9Zho9YGJRT3R_P03KpcaVg/edit?gid=0#gid=0');  
-});
-
-//IHK VORBEREITUNG
-document.getElementById('ipv4').addEventListener('click', () => {
-  window.open('https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=0#gid=0');
-});
-
-document.getElementById('it-abkurzung').addEventListener('click', () => {
-  window.open('https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=1191674173#gid=1191674173');
-});
-
-document.getElementById('ihk-frage-karten').addEventListener('click', () => {
-  window.open('https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=314203259#gid=314203259');
-});
-
-document.getElementById('it-begriffe').addEventListener('click', () => {
-  window.open('https://docs.google.com/spreadsheets/d/1Twu49Yf3sGDwB6h3nE62LwdgYR_L7oAfcxLPAKYNBbk/edit?gid=0#gid=0');
-});
-
-// Process user input to create a quiz and redirect to the next page
-document.getElementById('generate-json').addEventListener('click', async () => {
-  const sheetLink = document.getElementById('sheet-link').value;
-
+// Function to handle button clicks
+async function handleButtonClick(sheetLink) {
   try {
     // Convert Google Sheets data to JSON
     const csvLink = convertToCsvLink(sheetLink);
@@ -138,4 +94,12 @@ document.getElementById('generate-json').addEventListener('click', async () => {
     alert(`Hata: ${error.message}`);
     console.error('Hata:', error);
   }
+}
+
+// Add event listeners to all buttons
+document.querySelectorAll('button[data-link]').forEach(button => {
+  button.addEventListener('click', () => {
+    const sheetLink = button.getAttribute('data-link');
+    handleButtonClick(sheetLink);
+  });
 });
