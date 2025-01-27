@@ -57,7 +57,14 @@ function generateQuiz(inputList) {
     // Random incorrect options are being selected
     while (optionsSet.size < 4) {
       const randomEntry = inputList[Math.floor(Math.random() * inputList.length)];
-      optionsSet.add(randomEntry["ColumnB"]);
+      if (randomEntry["ColumnB"] && randomEntry["ColumnB"] !== correctAnswer) {
+        optionsSet.add(randomEntry["ColumnB"]);
+      }
+    }
+
+    // If there are fewer than 4 options, fill the rest with empty strings
+    while (optionsSet.size < 4) {
+      optionsSet.add('');
     }
 
     // Shuffle the options
