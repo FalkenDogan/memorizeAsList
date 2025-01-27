@@ -50,6 +50,11 @@ function generateQuiz(inputList) {
     const question = map["ColumnA"];
     const correctAnswer = map["ColumnB"];
 
+    if (!question || !correctAnswer) {
+      console.warn(`Eksik soru veya cevap: ${JSON.stringify(map)}`);
+      return; // Skip this entry if question or answer is missing
+    }
+
     // Set used to select incorrect answers
     const optionsSet = new Set();
     optionsSet.add(correctAnswer);
