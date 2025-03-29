@@ -8,7 +8,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-size: 1em;
-  display: flex;
+  /*display: flex;*/
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -31,19 +31,14 @@ body {
 /* Mobil cihazlar için düzenlemeler */
 @media (max-width: 1000px) {
   .container {
-    width: 95%;
+    width: 90%;
     max-width: 100%;
-    padding: 10px; /* Kenar boşluklarını azalt */
-    box-shadow: none;
-    font-size: 1.2em;
-    position: fixed; /* Sayfa değiştikçe kayma olmasını önle */
-    top: 5%;
+    padding: 20px;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    height: 90vh; /* Ekranı daha iyi kaplaması için */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    transform: translate(-50%, -50%);
+    box-shadow: none;
+    font-size: 1.2em; /* Yazı boyutunu büyüt */
   }
 }
 
@@ -302,7 +297,7 @@ li {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  max-height: 400px; /* Menünün maksimum yüksekliği */
+  max-height: 600px; /* Menünün maksimum yüksekliği */
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
 }
