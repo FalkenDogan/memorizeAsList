@@ -8,7 +8,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-size: 1em;
-  /*display: flex;*/
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -25,9 +25,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  
+  transform: translate(-50%, -50%); 
   
 }
 
@@ -59,7 +57,7 @@ h1 {
 }
 
 label {
-  font-size: clamp(1.5rem, 2vw, 1.5rem);
+  font-size: 30px;
   margin-bottom: 10px;
   display: block;
 }
@@ -228,7 +226,7 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(1.5rem, 2vw, 1.5rem);
+  font-size: 30px;
   padding: 20px;
   box-sizing: border-box;
   border: 1px solid #484444;
@@ -292,7 +290,7 @@ li {
   color: white;
   border: none;
   cursor: pointer;
-  font-size: clamp(1.5rem, 2vw, 1.5rem);
+  font-size: 30px;
 }
 
 .scroll-menu button:hover {
@@ -305,4 +303,5 @@ li {
   padding: 10px;
   margin: 5px 0;
   text-align: center;
+  font-size: 30px;
 }
