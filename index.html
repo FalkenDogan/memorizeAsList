@@ -7,8 +7,30 @@
   <title>Quiz App</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="pics/logo.png" type="image/png">
-</head>
+  <style>
+    .scroll-menu {
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      max-height: 400px; /* Menünün maksimum yüksekliği */
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+    }
 
+    .scroll-menu button {
+      margin: 5px;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .scroll-menu button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
 <body>
   <div class="container" style="text-align: center;">
     <!-- <h1>Welcome to Quiz App</h1> -->
@@ -16,25 +38,22 @@
     <!-- Deutsch Lernen Bölümü -->
     <div id="deutsch-lernen">
       <h2>Deutsch Lernen</h2>
-      <button id="generate-json", data-link="https://docs.google.com/spreadsheets/d/1jluqCaMbfK5JxGjT8w8XKqsvdUgy2vNI7GFwot7jnqg/edit?gid=1917887240#gid=1917887240">Miss Day and Night 1</button>
-      <button id="generate-json", data-link="https://docs.google.com/spreadsheets/d/1jluqCaMbfK5JxGjT8w8XKqsvdUgy2vNI7GFwot7jnqg/edit?gid=1642463596#gid=1642463596">Miss Day and Night 2</button>
-      <button id="generate-json", data-link="https://docs.google.com/spreadsheets/d/1jluqCaMbfK5JxGjT8w8XKqsvdUgy2vNI7GFwot7jnqg/edit?gid=1379391506#gid=1379391506">Miss Day and Night 3</button>
-      <button id="generate-json", data-link="https://docs.google.com/spreadsheets/d/1jluqCaMbfK5JxGjT8w8XKqsvdUgy2vNI7GFwot7jnqg/edit?gid=1286453777#gid=1286453777">Miss Day and Night 4</button>
-      <button id="generate-json", data-link="https://docs.google.com/spreadsheets/d/1kiKWxExaaF74gbqRYdWrwexbDC_TZ-kOWjVLLuvcIlc/edit?gid=1901053947#gid=1901053947">Insta Hochdeutschhochturkce</button>
-      <button id="generate-json", data-link="https://docs.google.com/spreadsheets/d/1kiKWxExaaF74gbqRYdWrwexbDC_TZ-kOWjVLLuvcIlc/edit?gid=1720778446#gid=1720778446">Insta Micheda</button>
-      <button id="generate-json", data-link="https://docs.google.com/spreadsheets/d/1rVZ7lyUQVjZj-b1Te4MQq9Zho9YGJRT3R_P03KpcaVg/edit?gid=0#gid=0">Womit Damit</button>
-    </div>
-
-    <!-- IHK Vorbereitung Bölümü -->
-    <div id="ihk-vorbereitung">
-      <h2>IHK Vorbereitung</h2>
-      <button id="generate-json", data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=0#gid=0">IPv4</button>
-      <button id="generate-json", data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=1191674173#gid=1191674173">IT Abkürzung</button>
-      <button id="generate-json", data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=314203259#gid=314203259">IHK Frage Karten</button>
-      <button id="generate-json", data-link="https://docs.google.com/spreadsheets/d/1Twu49Yf3sGDwB6h3nE62LwdgYR_L7oAfcxLPAKYNBbk/edit?gid=0#gid=0">IT Begriffe</button>
-      <button id="generate-json", data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=322864749#gid=322864749">Portnummer</button>
-      <button id="generate-json", data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=741719978#gid=741719978">IPv6</button>
-      <button id="generate-json", data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=971395649#gid=971395649">Code Fragen</button>
+      <div class="scroll-menu">
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1jluqCaMbfK5JxGjT8w8XKqsvdUgy2vNI7GFwot7jnqg/edit?gid=1917887240#gid=1917887240">Miss Day and Night 1</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1jluqCaMbfK5JxGjT8w8XKqsvdUgy2vNI7GFwot7jnqg/edit?gid=1642463596#gid=1642463596">Miss Day and Night 2</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1jluqCaMbfK5JxGjT8w8XKqsvdUgy2vNI7GFwot7jnqg/edit?gid=1379391506#gid=1379391506">Miss Day and Night 3</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1jluqCaMbfK5JxGjT8w8XKqsvdUgy2vNI7GFwot7jnqg/edit?gid=1286453777#gid=1286453777">Miss Day and Night 4</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kiKWxExaaF74gbqRYdWrwexbDC_TZ-kOWjVLLuvcIlc/edit?gid=1901053947#gid=1901053947">Insta Hochdeutschhochturkce</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kiKWxExaaF74gbqRYdWrwexbDC_TZ-kOWjVLLuvcIlc/edit?gid=1720778446#gid=1720778446">Insta Micheda</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1rVZ7lyUQVjZj-b1Te4MQq9Zho9YGJRT3R_P03KpcaVg/edit?gid=0#gid=0">Womit Damit</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=0#gid=0">IPv4</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=1191674173#gid=1191674173">IT Abkürzung</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=314203259#gid=314203259">IHK Frage Karten</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1Twu49Yf3sGDwB6h3nE62LwdgYR_L7oAfcxLPAKYNBbk/edit?gid=0#gid=0">IT Begriffe</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=322864749#gid=322864749">Portnummer</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=741719978#gid=741719978">IPv6</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=971395649#gid=971395649">Code Fragen</button>
+      </div>
     </div>
   </div>
   <script src="index_sheetToJson.js"></script>

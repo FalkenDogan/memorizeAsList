@@ -255,11 +255,3 @@ li {
 .close-button:hover {
   background-color: #4CAF50;
 }
-
-/* Butonların alt alta dizilmesi için stil */
-#deutsch-lernen button,
-#ihk-vorbereitung button {
-  display: block;
-  width: 100%;
-  margin: 10px 0;
-}
