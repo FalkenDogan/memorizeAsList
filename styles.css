@@ -8,15 +8,15 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-size: 1em;
-  display: flex;
+  /*display: flex;*/
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
 }
 .container {
-  width: 90%;
-  max-width: 400px;
+  width: 100%;
+  max-width: 500px;
   padding: 40px;
   border-radius: 10px;
   background-color: #e0d9d9;
@@ -29,7 +29,7 @@ body {
 }
 
 /* Mobil cihazlar için düzenlemeler */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .container {
     width: 90%;
     max-width: 100%;
