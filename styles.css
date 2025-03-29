@@ -255,3 +255,57 @@ li {
 .close-button:hover {
   background-color: #4CAF50;
 }
+
+
+/* scrool menu */
+.scroll-menu {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: 400px; /* Menünün maksimum yüksekliği */
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.scroll-menu button {
+  margin: 5px;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.scroll-menu button:hover {
+  background-color: #45a049;
+}
+
+.scroll-menu {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: 400px; /* Menünün maksimum yüksekliği */
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.scroll-menu button {
+  margin: 5px;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.scroll-menu button:hover {
+  background-color: #45a049;
+}
+
+.section-header {
+  color: white;
+  background-color: purple;
+  padding: 10px;
+  margin: 5px 0;
+  text-align: center;
+}
