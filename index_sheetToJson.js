@@ -1,4 +1,3 @@
-// Process the link provided by the user
 function convertToCsvLink(sheetUrl) {
   const regexWithGid = /https:\/\/docs\.google\.com\/spreadsheets\/d\/([a-zA-Z0-9-_]+)\/.*gid=([0-9]+)/;
   const regexWithUsp = /https:\/\/docs\.google\.com\/spreadsheets\/d\/([a-zA-Z0-9-_]+)\/edit\?usp=drivesdk/;
@@ -18,7 +17,10 @@ function convertToCsvLink(sheetUrl) {
   throw new Error('Geçersiz Google Sheets linki. Lütfen tam linki girin.');
 }
 
+
+
 // Fetch CSV data from Google Sheets and convert it to JSON
+// Google Sheets'ten CSV verilerini al ve JSON'a çevir
 async function fetchGoogleSheetData(sheetUrl) {
   const response = await fetch(sheetUrl);
   if (!response.ok) {
@@ -28,52 +30,16 @@ async function fetchGoogleSheetData(sheetUrl) {
 
   // Convert CSV to JSON format
   const rows = csvData.split('\n');
-  return rows.slice(1).map(row => {
+  return rows
+  .filter(row => row.trim() !== '') // boş satırları atla
+  .map(row => {
     const [ColumnA, ColumnB] = row.split(',|,');
     return { ColumnA: ColumnA?.trim(), ColumnB: ColumnB?.trim() };
   });
+
+  
 }
 
-// Shuffle the array
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-}
-
-// Generate Quiz 
-function generateQuiz(inputList) {
-  const quizData = [];
-
-  inputList.forEach((map) => {
-    const question = map["ColumnA"];
-    const correctAnswer = map["ColumnB"];
-
-    // Set used to select incorrect answers
-    const optionsSet = new Set();
-    optionsSet.add(correctAnswer);
-
-    // Random incorrect options are being selected
-    while (optionsSet.size < 4) {
-      const randomEntry = inputList[Math.floor(Math.random() * inputList.length)];
-      optionsSet.add(randomEntry["ColumnB"]);
-    }
-
-    // Shuffle the options
-    const options = Array.from(optionsSet);
-    shuffleArray(options);
-
-    // Create the question structure
-    quizData.push({
-      question: question,
-      options: options,
-      answer: correctAnswer,
-    });
-  });
-
-  return quizData;
-}
 // Process user input to create a quiz and redirect to the next page
 document.querySelectorAll('#generate-json').forEach(button => {
   button.addEventListener('click', async () => {
@@ -84,14 +50,11 @@ document.querySelectorAll('#generate-json').forEach(button => {
       const csvLink = convertToCsvLink(sheetLink);
       const jsonData = await fetchGoogleSheetData(csvLink);
 
-      // Generate quiz data
-      const quizData = generateQuiz(jsonData);
-
       // Save JSON data to localStorage
-      localStorage.setItem('quizData', JSON.stringify(quizData));
+      localStorage.setItem('jsonData', JSON.stringify(jsonData));
 
-      // Redirect the user to the Quiz page
-      window.location.href = 'selectQuestion.html';
+      // Redirect the user to the Select Column page
+      window.location.href = 'selectColumnGenerateQuestion.html';
     } catch (error) {
       alert(`Hata: ${error.message}`);
       console.error('Hata:', error);

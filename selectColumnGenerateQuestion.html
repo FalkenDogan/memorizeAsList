@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Column for Quiz</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="pics/logo.png" type="image/png">
+</head>
+<body>
+  <div class="container">
+    <button id="closeButton" class="close-button">X</button>
+
+    <h1>Select Column for Quiz</h1>
+    <form id="column-selection-form">
+      <label>
+        <input type="radio" name="columnOption" value="AtoC" checked>
+        Question A - Answer C
+      </label>
+      <label>
+        <input type="radio" name="columnOption" value="CtoA">
+        Question C - Answer A
+      </label>
+      <br><br>
+      <button type="submit" class="button">Generate Quiz</button>
+    </form>
+  </div>
+
+  <script src="selectColumnGenerateQuestion.js"></script>
+  <script>
+    document.getElementById('closeButton').addEventListener('click', function () {
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>
