@@ -11,6 +11,21 @@
 </head>
 <body>
   <div class="container" style="text-align: center;">
+
+    <!-- İLERLEME YÖNETİMİ BÖLÜMÜ (BURADAN BAŞLA) -->
+      <div class="progress-management" style="margin-bottom: 20px; padding: 15px; background: #f0f0f0; border-radius: 8px;">
+        <h3 style="margin-top: 0;">📊 İlerleme Yönetimi</h3>
+        <div id="progressIndicator" style="margin: 10px 0; font-size: 14px;">
+          <div class="progress-item">ℹ️ Kayıtlı ilerleme bulunmuyor</div>
+        </div>
+        <div style="margin-top: 15px;">
+          <button onclick="exportProgress()" class="button" style="margin: 5px;">📥 Export Progress</button>
+          <button onclick="importProgress()" class="button" style="margin: 5px;">📤 Import Progress</button>
+          <button onclick="showProgressStatus()" class="button" style="margin: 5px;">ℹ️ Show Status</button>
+          <button onclick="clearProgress()" class="button" style="margin: 5px; background: #d32f2f;">🗑️ Clear All</button>
+        </div>
+      </div>
+      <!-- İLERLEME YÖNETİMİ BÖLÜMÜ (BURAYA KADAR) -->
  
       <div class="scroll-menu">
         <div class="section-header">Miss Day and Night</div>
@@ -57,6 +72,7 @@
       </div>
 
   </div>
+    <script src="progress-manager.js"></script>
   <script src="index_sheetToJson.js"></script>
 </body>
 
