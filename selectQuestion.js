@@ -2,7 +2,7 @@
 let quizData = []; // JSON data will be loaded here
 
 // Load JSON data from LocalStorage
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const storedQuizData = localStorage.getItem('quizData'); // JSON data created by sheetToJson.js
 
   if (storedQuizData) {
@@ -10,6 +10,36 @@ document.addEventListener('DOMContentLoaded', () => {
       quizData = JSON.parse(storedQuizData); // Load JSON data
       document.getElementById('questionCount').innerText = `Number of questions: ${quizData.length}`;
       document.getElementById('endQuestion').max = quizData.length; // Set maximum number of questions
+      
+      // Progress-based recommendation
+      const webAppUrl = localStorage.getItem('webAppUrl');
+      const sheetName = localStorage.getItem('currentSheetName');
+
+      if (webAppUrl && webAppUrl !== 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec') {
+        const manager = new SheetProgressManager(webAppUrl, sheetName);
+        const progress = await manager.loadProgress();
+        
+        if (progress && progress.length > 0) {
+          const lastQuestion = manager.findLastStudiedQuestion(progress);
+          const unstudied = manager.getUnstudiedQuestions(progress);
+          const mostWrong = manager.getMostWrongQuestions(progress, 5);
+          
+          let message = '📊 İlerleme Durumunuz:\n\n';
+          message += `✅ Son çalıştığınız soru: ${lastQuestion + 1}\n`;
+          message += `📝 Hiç çalışılmamış soru: ${unstudied.length}\n`;
+          message += `❌ En çok yanlış yapılan: ${mostWrong.length}\n\n`;
+          message += 'Devam etmek ister misiniz?\n\n';
+          message += 'Tamam: Soru ' + (lastQuestion + 2) + "'den başla\n";
+          message += 'İptal: Manuel seçim yapacağım';
+          
+          const resume = confirm(message);
+          
+          if (resume && lastQuestion >= 0) {
+            document.getElementById('startQuestion').value = lastQuestion + 2;
+            document.getElementById('endQuestion').value = quizData.length;
+          }
+        }
+      }
     } catch (error) {
       console.error('Error processing JSON data:', error);
     }

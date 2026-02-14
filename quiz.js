@@ -5,6 +5,7 @@ let currentQuestion = 0;
 let score = 0;
 let incorrectAnswers = [];
 let previousAnswers = [];
+let progressManager = null;
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -86,6 +87,17 @@ function startQuiz() {
 
   selectedQuizData = quizData;
   
+  // Initialize progress manager
+  const webAppUrl = localStorage.getItem('webAppUrl');
+  const sheetName = localStorage.getItem('currentSheetName');
+  
+  if (webAppUrl && webAppUrl !== 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec') {
+    progressManager = new SheetProgressManager(webAppUrl, sheetName);
+    progressManager.syncOfflineQueue().catch(err => {
+      console.error('Failed to sync offline queue:', err);
+    });
+  }
+  
   const savedProgress = JSON.parse(localStorage.getItem('quizProgress'));
   if (savedProgress && savedProgress.quizId === getQuizId()) {
     const resume = confirm(
@@ -116,20 +128,32 @@ function startQuiz() {
   displayQuestion();
 }
 
-function checkAnswer() {
+async function checkAnswer() {
   const selectedOption = document.querySelector('input[name="quiz"]:checked');
   if (selectedOption) {
     const answer = selectedOption.value;
+    const questionData = selectedQuizData[currentQuestion];
     previousAnswers[currentQuestion] = answer;
-    if (answer === selectedQuizData[currentQuestion].answer) {
+    
+    const isCorrect = (answer === questionData.answer);
+    
+    if (isCorrect) {
       score++;
     } else {
       incorrectAnswers.push({
-        question: selectedQuizData[currentQuestion].question,
+        question: questionData.question,
         incorrectAnswer: answer,
-        correctAnswer: selectedQuizData[currentQuestion].answer,
+        correctAnswer: questionData.answer,
       });
     }
+    
+    // Update progress to Google Sheets
+    if (progressManager) {
+      const startQuestion = parseInt(localStorage.getItem('startQuestion') || '0');
+      const globalRowIndex = startQuestion + currentQuestion;
+      await progressManager.updateProgress(globalRowIndex, isCorrect, 'quiz');
+    }
+    
     currentQuestion++;
     
     saveProgress();

@@ -3,7 +3,8 @@
 let selectedQuizData = []; 
 let currentQuestion = 0; 
 let score = 0; 
-let previousAnswers = []; 
+let previousAnswers = [];
+let progressManager = null; 
 
 function shuffleArray(array) { 
   for (let i = array.length - 1; i > 0; i--) { 
@@ -55,7 +56,18 @@ function startQuiz() {
     return; 
   } 
 
-  selectedQuizData = quizData;  
+  selectedQuizData = quizData;
+  
+  // Initialize progress manager
+  const webAppUrl = localStorage.getItem('webAppUrl');
+  const sheetName = localStorage.getItem('currentSheetName');
+  
+  if (webAppUrl && webAppUrl !== 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec') {
+    progressManager = new SheetProgressManager(webAppUrl, sheetName);
+    progressManager.syncOfflineQueue().catch(err => {
+      console.error('Failed to sync offline queue:', err);
+    });
+  }
   
   const savedProgress = JSON.parse(localStorage.getItem('flashcardProgress')); 
   if (savedProgress && savedProgress.flashcardId === getFlashcardId()) { 
@@ -120,6 +132,24 @@ function exitQuiz() {
 
 function goSelectQuestionPage() { 
   window.location.href = 'selectQuestion.html'; 
+}
+
+async function markAsKnown() {
+  if (progressManager) {
+    const startQuestion = parseInt(localStorage.getItem('startQuestion') || '0');
+    const globalRowIndex = startQuestion + currentQuestion;
+    await progressManager.updateProgress(globalRowIndex, true, 'flashcard');
+  }
+  checkAnswer(); // Sonraki karta geç
+}
+
+async function markAsUnknown() {
+  if (progressManager) {
+    const startQuestion = parseInt(localStorage.getItem('startQuestion') || '0');
+    const globalRowIndex = startQuestion + currentQuestion;
+    await progressManager.updateProgress(globalRowIndex, false, 'flashcard');
+  }
+  checkAnswer(); // Sonraki karta geç
 }
 
 document.getElementById('submit').addEventListener('click', checkAnswer); 

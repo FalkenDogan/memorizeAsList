@@ -11,63 +11,48 @@
 </head>
 <body>
   <div class="container" style="text-align: center;">
-
-    <!-- İLERLEME YÖNETİMİ BÖLÜMÜ (BURADAN BAŞLA) -->
-      <div class="progress-management" style="margin-bottom: 20px; padding: 15px; background: #f0f0f0; border-radius: 8px;">
-        <h3 style="margin-top: 0;">📊 İlerleme Yönetimi</h3>
-        <div id="progressIndicator" style="margin: 10px 0; font-size: 14px;">
-          <div class="progress-item">ℹ️ Kayıtlı ilerleme bulunmuyor</div>
-        </div>
-        <div style="margin-top: 15px;">
-          <button onclick="exportProgress()" class="button" style="margin: 5px;">📥 Export Progress</button>
-          <button onclick="importProgress()" class="button" style="margin: 5px;">📤 Import Progress</button>
-          <button onclick="showProgressStatus()" class="button" style="margin: 5px;">ℹ️ Show Status</button>
-          <button onclick="clearProgress()" class="button" style="margin: 5px; background: #d32f2f;">🗑️ Clear All</button>
-        </div>
-      </div>
-      <!-- İLERLEME YÖNETİMİ BÖLÜMÜ (BURAYA KADAR) -->
  
       <div class="scroll-menu">
         <div class="section-header">Miss Day and Night</div>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1jluqCaMbfK5JxGjT8w8XKqsvdUgy2vNI7GFwot7jnqg/edit?gid=1917887240#gid=1917887240">Miss Day and Night 1</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1jluqCaMbfK5JxGjT8w8XKqsvdUgy2vNI7GFwot7jnqg/edit?gid=1642463596#gid=1642463596">Miss Day and Night 2</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1jluqCaMbfK5JxGjT8w8XKqsvdUgy2vNI7GFwot7jnqg/edit?gid=1379391506#gid=1379391506">Miss Day and Night 3</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1jluqCaMbfK5JxGjT8w8XKqsvdUgy2vNI7GFwot7jnqg/edit?gid=1286453777#gid=1286453777">Miss Day and Night 4</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1jluqCaMbfK5JxGjT8w8XKqsvdUgy2vNI7GFwot7jnqg/edit?gid=1917887240#gid=1917887240" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="MissDayNight1">Miss Day and Night 1</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1jluqCaMbfK5JxGjT8w8XKqsvdUgy2vNI7GFwot7jnqg/edit?gid=1642463596#gid=1642463596" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="MissDayNight2">Miss Day and Night 2</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1jluqCaMbfK5JxGjT8w8XKqsvdUgy2vNI7GFwot7jnqg/edit?gid=1379391506#gid=1379391506" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="MissDayNight3">Miss Day and Night 3</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1jluqCaMbfK5JxGjT8w8XKqsvdUgy2vNI7GFwot7jnqg/edit?gid=1286453777#gid=1286453777" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="MissDayNight4">Miss Day and Night 4</button>
         
         <div class="section-header">Türkisch für Anfänger</div>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1lgYuGKE1AYrvF-28X_LdmO3Vjim927rc-FkN-ktRjCI/edit?gid=0#gid=0">Folge 1</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1lgYuGKE1AYrvF-28X_LdmO3Vjim927rc-FkN-ktRjCI/edit?gid=0#gid=0" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="Folge1">Folge 1</button>
 
         <div class="section-header">Deutsch Wörter Lernen</div>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kgq4o030nC2Zdi16KMjCkMNVDhnKTILyaSPGFdlWrxw/edit?gid=1486663862#gid=1486663862">Führen</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kgq4o030nC2Zdi16KMjCkMNVDhnKTILyaSPGFdlWrxw/edit?gid=543638373#gid=543638373">Geben</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kgq4o030nC2Zdi16KMjCkMNVDhnKTILyaSPGFdlWrxw/edit?gid=835149936#gid=835149936">Gehen</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kgq4o030nC2Zdi16KMjCkMNVDhnKTILyaSPGFdlWrxw/edit?gid=1660008158#gid=1660008158">Halten</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kgq4o030nC2Zdi16KMjCkMNVDhnKTILyaSPGFdlWrxw/edit?gid=999615350#gid=999615350">Holen</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kgq4o030nC2Zdi16KMjCkMNVDhnKTILyaSPGFdlWrxw/edit?gid=2114227824#gid=2114227824">Lassen</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kgq4o030nC2Zdi16KMjCkMNVDhnKTILyaSPGFdlWrxw/edit?gid=1924739825#gid=1924739825">Nehmen</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kgq4o030nC2Zdi16KMjCkMNVDhnKTILyaSPGFdlWrxw/edit?gid=0#gid=0">Setzen</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kgq4o030nC2Zdi16KMjCkMNVDhnKTILyaSPGFdlWrxw/edit?gid=1415452522#gid=1415452522">Teilen</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kgq4o030nC2Zdi16KMjCkMNVDhnKTILyaSPGFdlWrxw/edit?gid=352211270#gid=352211270">Treiben</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kgq4o030nC2Zdi16KMjCkMNVDhnKTILyaSPGFdlWrxw/edit?gid=1486663862#gid=1486663862" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="Fuhren">Führen</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kgq4o030nC2Zdi16KMjCkMNVDhnKTILyaSPGFdlWrxw/edit?gid=543638373#gid=543638373" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="Geben">Geben</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kgq4o030nC2Zdi16KMjCkMNVDhnKTILyaSPGFdlWrxw/edit?gid=835149936#gid=835149936" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="Gehen">Gehen</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kgq4o030nC2Zdi16KMjCkMNVDhnKTILyaSPGFdlWrxw/edit?gid=1660008158#gid=1660008158" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="Halten">Halten</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kgq4o030nC2Zdi16KMjCkMNVDhnKTILyaSPGFdlWrxw/edit?gid=999615350#gid=999615350" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="Holen">Holen</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kgq4o030nC2Zdi16KMjCkMNVDhnKTILyaSPGFdlWrxw/edit?gid=2114227824#gid=2114227824" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="Lassen">Lassen</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kgq4o030nC2Zdi16KMjCkMNVDhnKTILyaSPGFdlWrxw/edit?gid=1924739825#gid=1924739825" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="Nehmen">Nehmen</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kgq4o030nC2Zdi16KMjCkMNVDhnKTILyaSPGFdlWrxw/edit?gid=0#gid=0" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="Setzen">Setzen</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kgq4o030nC2Zdi16KMjCkMNVDhnKTILyaSPGFdlWrxw/edit?gid=1415452522#gid=1415452522" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="Teilen">Teilen</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kgq4o030nC2Zdi16KMjCkMNVDhnKTILyaSPGFdlWrxw/edit?gid=352211270#gid=352211270" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="Treiben">Treiben</button>
         
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1rVZ7lyUQVjZj-b1Te4MQq9Zho9YGJRT3R_P03KpcaVg/edit?gid=0#gid=0">Woran Daran</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1WHIlCzl9zbxI8248D0PyGMOw2HJruotJUpHikVC38Y4/edit?gid=0#gid=0">Zeit Wörter</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1rVZ7lyUQVjZj-b1Te4MQq9Zho9YGJRT3R_P03KpcaVg/edit?gid=0#gid=0" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="WoranDaran">Woran Daran</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1WHIlCzl9zbxI8248D0PyGMOw2HJruotJUpHikVC38Y4/edit?gid=0#gid=0" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="ZeitWorter">Zeit Wörter</button>
        
         <div class="section-header">Instagram</div>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kiKWxExaaF74gbqRYdWrwexbDC_TZ-kOWjVLLuvcIlc/edit?gid=1901053947#gid=1901053947">Insta Hochdeutschhochturkce</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kiKWxExaaF74gbqRYdWrwexbDC_TZ-kOWjVLLuvcIlc/edit?gid=1720778446#gid=1720778446">Insta Micheda</button>      
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kiKWxExaaF74gbqRYdWrwexbDC_TZ-kOWjVLLuvcIlc/edit?gid=1901053947#gid=1901053947" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="InstaHochdeutsch">Insta Hochdeutschhochturkce</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1kiKWxExaaF74gbqRYdWrwexbDC_TZ-kOWjVLLuvcIlc/edit?gid=1720778446#gid=1720778446" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="InstaMicheda">Insta Micheda</button>      
 
         <div class="section-header">IHK Prüfung</div>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=0#gid=0">IPv4</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=1191674173#gid=1191674173">IT Abkürzung</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=314203259#gid=314203259">IHK Frage Karten</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1Twu49Yf3sGDwB6h3nE62LwdgYR_L7oAfcxLPAKYNBbk/edit?gid=0#gid=0">IT Begriffe</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=322864749#gid=322864749">Portnummer</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=741719978#gid=741719978">IPv6</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=971395649#gid=971395649">Code Fragen</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1iA2HdfuJFjxfrJcBXgPVykhon0gRKIs2TWCwHNQT7hE/edit?gid=696951273#gid=696951273">AP2 Teil 1 Fragen</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1GrftDteq0EPg_4ZE6BU24heajPGvLv1KZ2I0rJC8Y-k/edit?gid=0#gid=0">WISO 2023 Sommer</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1GrftDteq0EPg_4ZE6BU24heajPGvLv1KZ2I0rJC8Y-k/edit?gid=139207403#gid=139207403">WISO 2020 Winter</button>
-        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1GrftDteq0EPg_4ZE6BU24heajPGvLv1KZ2I0rJC8Y-k/edit?gid=1654600855#gid=1654600855">WISO 2020 Sommer</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=0#gid=0" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="IPv4">IPv4</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=1191674173#gid=1191674173" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="ITAbkurzung">IT Abkürzung</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=314203259#gid=314203259" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="IHKFrageKarten">IHK Frage Karten</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1Twu49Yf3sGDwB6h3nE62LwdgYR_L7oAfcxLPAKYNBbk/edit?gid=0#gid=0" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="ITBegriffe">IT Begriffe</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=322864749#gid=322864749" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="Portnummer">Portnummer</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=741719978#gid=741719978" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="IPv6">IPv6</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1gPIRYrbfPxcgd-HZw_lEaCqhY9rfKzqRlRbGndEZDac/edit?gid=971395649#gid=971395649" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="CodeFragen">Code Fragen</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1iA2HdfuJFjxfrJcBXgPVykhon0gRKIs2TWCwHNQT7hE/edit?gid=696951273#gid=696951273" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="AP2Teil1">AP2 Teil 1 Fragen</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1GrftDteq0EPg_4ZE6BU24heajPGvLv1KZ2I0rJC8Y-k/edit?gid=0#gid=0" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="WISO2023Sommer">WISO 2023 Sommer</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1GrftDteq0EPg_4ZE6BU24heajPGvLv1KZ2I0rJC8Y-k/edit?gid=139207403#gid=139207403" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="WISO2020Winter">WISO 2020 Winter</button>
+        <button id="generate-json" data-link="https://docs.google.com/spreadsheets/d/1GrftDteq0EPg_4ZE6BU24heajPGvLv1KZ2I0rJC8Y-k/edit?gid=1654600855#gid=1654600855" data-webapp-url="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" data-sheet-name="WISO2020Sommer">WISO 2020 Sommer</button>
 
       </div>
 

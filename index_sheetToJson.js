@@ -44,13 +44,18 @@ async function fetchGoogleSheetData(sheetUrl) {
 document.querySelectorAll('#generate-json').forEach(button => {
   button.addEventListener('click', async () => {
     const sheetLink = button.getAttribute('data-link');
+    const webAppUrl = button.getAttribute('data-webapp-url');
+    const sheetName = button.getAttribute('data-sheet-name');
 
     try {
       // Convert Google Sheets data to JSON
       const csvLink = convertToCsvLink(sheetLink);
       const jsonData = await fetchGoogleSheetData(csvLink);
 
-      // Save JSON data to localStorage
+      // Save data to localStorage
+      localStorage.setItem('currentSheetUrl', sheetLink);
+      localStorage.setItem('webAppUrl', webAppUrl);
+      localStorage.setItem('currentSheetName', sheetName);
       localStorage.setItem('jsonData', JSON.stringify(jsonData));
 
       // Redirect the user to the Select Column page
