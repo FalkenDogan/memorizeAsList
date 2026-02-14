@@ -17,6 +17,14 @@
     <div id="quiz"></div>
     <div id="result" class="result"></div>
     <div id="incorrectAnswers" class="incorrect-answers hide"></div>
+    <div style="margin-top: 20px; margin-bottom: 10px;">
+      <button onclick="markAsKnown()" class="button" style="background: #4CAF50; margin: 5px;">
+        ✅ Biliyorum
+      </button>
+      <button onclick="markAsUnknown()" class="button" style="background: #f44336; margin: 5px;">
+        ❌ Bilmiyorum
+      </button>
+    </div>
     <button id="previous" class="button" style="display:none; margin-left: 10px;">Previous Card</button>
     <button id="submit" class="button" style="display:none; margin-left: 30px;">Next Card</button>
     <button id="retry" class="button hide">Retry</button>
@@ -28,6 +36,7 @@
   <p>
     
   </p>
+  <script src="sheet-progress-manager.js"></script>
   <script src="flashcard.js"></script>
 </body>
 
