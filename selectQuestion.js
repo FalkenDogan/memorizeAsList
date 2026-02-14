@@ -1,6 +1,20 @@
 //selectQuestion.js
 let quizData = []; // JSON data will be loaded here
 
+// Helper function to construct progress message
+function buildProgressMessage(lastQuestion, unstudiedCount, mostWrongCount) {
+  return `📊 İlerleme Durumunuz:
+
+✅ Son çalıştığınız soru: ${lastQuestion + 1}
+📝 Hiç çalışılmamış soru: ${unstudiedCount}
+❌ En çok yanlış yapılan: ${mostWrongCount}
+
+Devam etmek ister misiniz?
+
+Tamam: Soru ${lastQuestion + 2}'den başla
+İptal: Manuel seçim yapacağım`;
+}
+
 // Load JSON data from LocalStorage
 document.addEventListener('DOMContentLoaded', async () => {
   const storedQuizData = localStorage.getItem('quizData'); // JSON data created by sheetToJson.js
@@ -15,7 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const webAppUrl = localStorage.getItem('webAppUrl');
       const sheetName = localStorage.getItem('currentSheetName');
 
-      if (webAppUrl && webAppUrl !== 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec') {
+      if (webAppUrl && webAppUrl !== PLACEHOLDER_WEBAPP_URL) {
         const manager = new SheetProgressManager(webAppUrl, sheetName);
         const progress = await manager.loadProgress();
         
@@ -25,14 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           const mostWrong = manager.getMostWrongQuestions(progress, 5);
           
           if (lastQuestion >= 0) {
-            let message = '📊 İlerleme Durumunuz:\n\n';
-            message += `✅ Son çalıştığınız soru: ${lastQuestion + 1}\n`;
-            message += `📝 Hiç çalışılmamış soru: ${unstudied.length}\n`;
-            message += `❌ En çok yanlış yapılan: ${mostWrong.length}\n\n`;
-            message += 'Devam etmek ister misiniz?\n\n';
-            message += 'Tamam: Soru ' + (lastQuestion + 2) + "'den başla\n";
-            message += 'İptal: Manuel seçim yapacağım';
-            
+            const message = buildProgressMessage(lastQuestion, unstudied.length, mostWrong.length);
             const resume = confirm(message);
             
             if (resume) {

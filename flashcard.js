@@ -62,7 +62,7 @@ function startQuiz() {
   const webAppUrl = localStorage.getItem('webAppUrl');
   const sheetName = localStorage.getItem('currentSheetName');
   
-  if (webAppUrl && webAppUrl !== 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec') {
+  if (webAppUrl && webAppUrl !== PLACEHOLDER_WEBAPP_URL) {
     progressManager = new SheetProgressManager(webAppUrl, sheetName);
     progressManager.syncOfflineQueue().catch(err => {
       console.error('Failed to sync offline queue:', err);

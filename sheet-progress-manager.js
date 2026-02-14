@@ -1,6 +1,9 @@
 // sheet-progress-manager.js
 // Google Sheets Progress Manager for Quiz/Flashcard Application
 
+// Placeholder URL for Google Apps Script Web App
+const PLACEHOLDER_WEBAPP_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+
 class SheetProgressManager {
   constructor(webAppUrl, sheetName) {
     this.webAppUrl = webAppUrl;
@@ -35,7 +38,7 @@ class SheetProgressManager {
   async updateProgress(rowIndex, isCorrect, mode = 'quiz') {
     const data = {
       action: 'updateProgress',
-      row: rowIndex + 2, // +2 because row 1 is header and rowIndex is 0-based
+      row: rowIndex + 2, // +2 because spreadsheet row 1 is header and rowIndex is 0-based
       isCorrect: isCorrect,
       mode: mode
     };
@@ -195,3 +198,4 @@ class SheetProgressManager {
 
 // Make it globally available
 window.SheetProgressManager = SheetProgressManager;
+window.PLACEHOLDER_WEBAPP_URL = PLACEHOLDER_WEBAPP_URL;
